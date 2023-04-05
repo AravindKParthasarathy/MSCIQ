@@ -4,13 +4,18 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BaseClass {
 	public static RemoteWebDriver driver;
 	
 	public RemoteWebDriver startApp() {
-		driver = new ChromeDriver();
+		
+		ChromeOptions co = new ChromeOptions();
+		 co.addArguments("--remote-allow-origins=*");
+		  driver = new ChromeDriver(co);
+		//driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.get("http://qa.msciq.io/login");
