@@ -13,8 +13,8 @@ import projectSpecification.ProjectSpecification;
 public class Department extends ProjectSpecification {
 	
 
-	String departmentcode = "Pantry";
-	String departmentname = "Pantry";
+	String departmentcode = "AKPantry";
+	String departmentname = "AKPantry";
 	String activefrom = "04/01/2023";
 	
 

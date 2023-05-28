@@ -1,10 +1,16 @@
 package pages;
 
+import java.time.Duration;
+
 //import java.awt.AWTException;
 //import java.awt.Robot;
 //import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import projectSpecification.ProjectSpecification;
 
@@ -12,8 +18,8 @@ import projectSpecification.ProjectSpecification;
 public class UpdateGOCPage extends ProjectSpecification{
 	By name = By.xpath("//input[@id='gcName']");
 	By code = By.xpath("//input[@id='gcCode']");
-	By selectCurrency = By.xpath("//div[@id='mui-component-select-currency']");
-	By currency = By.xpath("//li[text()='INR']");
+	By selectGOCCurrency = By.xpath("//div[@id='mui-component-select-currency']");
+	By GOCcurrency = By.xpath("//li[text()='INR']");
 	By selectCountry = By.xpath("//div[@id='mui-component-select-country']");
 	By country = By.xpath("//li[text()='India']");
 	By updateBtn = By.xpath("//button[text()='Update']");
@@ -35,9 +41,23 @@ public class UpdateGOCPage extends ProjectSpecification{
 //		return this;
 //	}
 	public UpdateGOCPage SelectCurrency()
+	
+	
 	{
-		click(driver.findElement(selectCurrency));
-		click(driver.findElement(currency));
+		
+		
+
+	    WebElement selectCurrency = driver.findElement((By) selectGOCCurrency);
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+	    wait.until(ExpectedConditions.elementToBeClickable(selectCurrency));
+	    selectCurrency.sendKeys("INR");
+	    selectCurrency.click();
+	    
+	    WebElement currency = driver.findElement((By) GOCcurrency);
+	    wait.until(ExpectedConditions.elementToBeClickable(currency));
+	    currency.click();
+	    
+	
 		return this;
 	}
 	

@@ -13,9 +13,10 @@ import projectSpecification.ProjectSpecification;
 public class BusinessUnit extends ProjectSpecification {
 	
 
-	String bucode = "Pantry";
-	String buname = "Pantry";
+	String bucode = "AKPantry";
+	String buname = "AKPantry";
 	String activefrom = "04/01/2023";
+	String goc = "AKGC - AKGC";
 	
 
   static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -24,7 +25,7 @@ public class BusinessUnit extends ProjectSpecification {
 
   WebElement GroupofCompany = wait.until(
     ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='spreadsheet']/div[3]/div/div[2]/table/tbody/tr/td[3]")));
-  By GOCName = By.xpath("//div[@class='jdropdown-item']/child::div[text()='AKGOC - AKGOC']");
+  By GOCName = By.xpath("//div[@class='jdropdown-item']/child::div[text()='"+goc+"']");
 
   WebElement BUCode = wait.until(
     ExpectedConditions.elementToBeClickable(By.cssSelector("#spreadsheet > div.jtabs-content > div > div.jss_content > table > tbody > tr > td:nth-child(4)")));

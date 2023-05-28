@@ -1,6 +1,7 @@
 package pages;
 
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,13 +9,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import base.ConfigReader;
 import projectSpecification.ProjectSpecification;
 
 public class Company extends ProjectSpecification {
 
 
-	String companyName = "NFMOT";
-	String companyCode = "NFMOT";
+	
 	
 	 WebElement CompanyCode= wait.until(
 		        ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"spreadsheet\"]/div[3]/div/div[2]/table/tbody/tr/td[3]")));
@@ -40,6 +41,9 @@ public class Company extends ProjectSpecification {
 	
 	
 	public Company companyCode() throws Exception {
+		
+		 Properties prop = ConfigReader.getProperties();
+         String companyCode = prop.getProperty("companyCode");
 			
 		 actions.doubleClick(CompanyCode).sendKeys(companyCode).perform();
 		 
@@ -49,6 +53,9 @@ public class Company extends ProjectSpecification {
     }
 	
 	public Company companyName() throws Exception {
+		
+		 Properties prop = ConfigReader.getProperties();
+         String companyName = prop.getProperty("companyName");
 		
 		 actions.doubleClick(CompanyName).sendKeys(companyName).perform();
 		 
